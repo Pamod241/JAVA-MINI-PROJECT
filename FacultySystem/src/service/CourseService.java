@@ -13,13 +13,10 @@ import java.util.Map;
 
 public class CourseService {
 
-    // ---------------------------------------------------------------
-    // GET all courses from the database
-    // Returns a list where each item is one course's details
-    // ---------------------------------------------------------------
+
     public List<Map<String, Object>> getAll() {
 
-        // This list will hold all the courses we find
+
         List<Map<String, Object>> courseList = new ArrayList<>();
 
         String sql = "SELECT * FROM Course ORDER BY C_code ASC";
@@ -28,10 +25,10 @@ public class CourseService {
             Statement statement = DBConnection.getConnection().createStatement();
             ResultSet results   = statement.executeQuery(sql);
 
-            // Loop through each row returned from the database
+
             while (results.next()) {
 
-                // A Map holds one course's details as key-value pairs
+
                 Map<String, Object> course = new LinkedHashMap<>();
 
                 course.put("course_id",   results.getString("C_code"));
@@ -40,7 +37,7 @@ public class CourseService {
                 course.put("type",        results.getString("Type"));
                 course.put("lec_id",      results.getString("Lec_id"));
 
-                // Add this course to the main list
+
                 courseList.add(course);
             }
 
@@ -51,14 +48,11 @@ public class CourseService {
         return courseList;
     }
 
-    // ---------------------------------------------------------------
-    // CREATE a new course and save it to the database
-    // Returns null if successful, or an error message if it fails
-    // ---------------------------------------------------------------
+
     public String create(String courseId, String courseName, int credits,
                          String type, String lecId) {
 
-        // First check if this course ID is already taken
+
         if (courseIdExists(courseId)) {
             return "Course ID already exists.";
         }
@@ -74,11 +68,11 @@ public class CourseService {
             statement.setInt   (3, credits);
             statement.setString(4, type);
 
-            // If no lecturer is assigned, store NULL in the database
+
             statement.setString(5, lecId.isEmpty() ? null : lecId);
 
             statement.executeUpdate();
-            return null; // null means success
+            return null;
 
         } catch (SQLException e) {
             System.err.println("Error in create: " + e.getMessage());
@@ -86,10 +80,7 @@ public class CourseService {
         }
     }
 
-    // ---------------------------------------------------------------
-    // UPDATE an existing course's details
-    // Returns null if successful, or an error message if it fails
-    // ---------------------------------------------------------------
+
     public String update(String courseId, String courseName, int credits,
                          String type, String lecId) {
 
@@ -104,13 +95,13 @@ public class CourseService {
             statement.setInt   (2, credits);
             statement.setString(3, type);
 
-            // If no lecturer is assigned, store NULL in the database
+
             statement.setString(4, lecId.isEmpty() ? null : lecId);
 
-            statement.setString(5, courseId);  // the WHERE condition
+            statement.setString(5, courseId);
 
             statement.executeUpdate();
-            return null; // null means success
+            return null;
 
         } catch (SQLException e) {
             System.err.println("Error in update: " + e.getMessage());
@@ -118,12 +109,7 @@ public class CourseService {
         }
     }
 
-    // ---------------------------------------------------------------
-    // DELETE a course from the database
-    // Returns null if successful, or an error message if it fails
-    // Note: delete will fail if the course has attendance or marks
-    //       records linked to it (database foreign key protection)
-    // ---------------------------------------------------------------
+
     public String delete(String courseId) {
 
         String sql = "DELETE FROM Course WHERE C_code = ?";
@@ -133,7 +119,7 @@ public class CourseService {
 
             statement.setString(1, courseId);
             statement.executeUpdate();
-            return null; // null means success
+            return null;
 
         } catch (SQLException e) {
             System.err.println("Error in delete: " + e.getMessage());
@@ -141,14 +127,9 @@ public class CourseService {
         }
     }
 
-    // ---------------------------------------------------------------
-    // CHECK if a course ID already exists in the database
-    // Returns true if found, false if not found
-    // Used by create() to prevent duplicate course IDs
-    // ---------------------------------------------------------------
+
     public boolean courseIdExists(String courseId) {
 
-        // "SELECT 1" is a quick way to check existence — it returns one row if found
         String sql = "SELECT 1 FROM Course WHERE C_code = ?";
 
         try {
@@ -157,7 +138,7 @@ public class CourseService {
 
             ResultSet results = statement.executeQuery();
 
-            // results.next() returns true if at least one row was found
+
             return results.next();
 
         } catch (SQLException e) {
