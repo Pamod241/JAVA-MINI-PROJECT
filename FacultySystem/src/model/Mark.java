@@ -47,9 +47,11 @@ public class Mark {
         return assessment;
     }
     public int    getMid()        {
+
         return mid;
     }
     public int    getEnd()        {
+
         return end;
     }
     public String getStudentId()  {
