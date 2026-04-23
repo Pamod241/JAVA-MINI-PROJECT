@@ -69,5 +69,7 @@ public class Mark {
         return (quiz1 + quiz2 + quiz3 + assessment + mid) / 5.0;
     }
 
-    public int getFinalMark() { return end; }
+    public int getFinalMark() {
+
+        return end; }
 }
