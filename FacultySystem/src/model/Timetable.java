@@ -50,5 +50,6 @@ public class Timetable {
     }
     public String getSessionType(){
         return sessionType;
+
     }
 }
