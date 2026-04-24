@@ -44,6 +44,7 @@ public class Timetable {
     }
     public LocalTime getEndTime(){
         return endTime;
+
     }
     public String getLocation(){
         return location;
