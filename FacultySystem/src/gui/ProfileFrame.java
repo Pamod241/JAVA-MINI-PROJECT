@@ -19,6 +19,7 @@ public class ProfileFrame extends JFrame {
     public ProfileFrame(User user) {
         this.user = user;
         buildPanel();
+
     }
 
     public JPanel getContentPanel() { return contentPanel; }
