@@ -8,13 +8,7 @@ import util.UITheme;
 import javax.swing.*;
 import javax.swing.table.*;
 import java.awt.*;
-import java.util.Map;
-
-/**
- * Technical Officer's Attendance management panel.
- * Provides: Add attendance records, batch summary view, individual check.
- * (Same data as AttendanceFrame but scoped to Tech Officer role.)
- */
+import java.util.
 public class TechOfficerAttendanceFrame extends JFrame {
 
     private final AttendanceService svc = new AttendanceService();
@@ -36,7 +30,7 @@ public class TechOfficerAttendanceFrame extends JFrame {
         header.add(UITheme.label("Attendance Management", UITheme.TEXT_PRIMARY,
             new Font("Segoe UI", Font.BOLD, 20)), BorderLayout.WEST);
 
-        // Department badge
+
         if (user instanceof TechnicalOfficer to && to.getDepartment() != null) {
             JLabel deptBadge = UITheme.badge("Dept: " + to.getDepartment(), UITheme.ACCENT);
             header.add(deptBadge, BorderLayout.EAST);
@@ -53,7 +47,6 @@ public class TechOfficerAttendanceFrame extends JFrame {
         contentPanel.add(tabs, BorderLayout.CENTER);
     }
 
-    // ── ADD ATTENDANCE ────────────────────────────────────────────────────
     private JPanel buildAddPanel() {
         JPanel p = new JPanel(new BorderLayout(0, 12));
         p.setOpaque(false);
@@ -103,7 +96,6 @@ public class TechOfficerAttendanceFrame extends JFrame {
         return p;
     }
 
-    // ── INDIVIDUAL CHECK ──────────────────────────────────────────────────
     private JPanel buildIndividualPanel() {
         JPanel p = new JPanel(new BorderLayout(0, 16));
         p.setOpaque(false);
@@ -155,7 +147,6 @@ public class TechOfficerAttendanceFrame extends JFrame {
         return p;
     }
 
-    // ── BATCH SUMMARY ─────────────────────────────────────────────────────
     private JPanel buildBatchPanel() {
         JPanel p = new JPanel(new BorderLayout(0, 12));
         p.setOpaque(false);
@@ -183,7 +174,6 @@ public class TechOfficerAttendanceFrame extends JFrame {
         return p;
     }
 
-    // ── HELPERS ───────────────────────────────────────────────────────────
     private JPanel resultCard(String title, JLabel val, Color accent) {
         JPanel c = UITheme.card(); c.setLayout(new BorderLayout(0, 8));
         val.setHorizontalAlignment(SwingConstants.CENTER);
