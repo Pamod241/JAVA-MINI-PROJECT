@@ -67,7 +67,7 @@ public class AttendanceFrame extends JFrame {
         gbc.gridx=2; form.add(typeCombo, gbc);
         gbc.gridx=3; form.add(checkBtn, gbc);
 
-        // Result cards
+
         JPanel resultRow = new JPanel(new GridLayout(1,3,12,0)); resultRow.setOpaque(false);
         JLabel pctLabel  = UITheme.label("—", UITheme.ACCENT,        new Font("Segoe UI",Font.BOLD,22));
         JLabel eligLabel = UITheme.label("—", UITheme.TEXT_SECONDARY, new Font("Segoe UI",Font.BOLD,16));
