@@ -4,7 +4,7 @@ import db.DBConnection;
 import java.sql.*;
 import java.util.*;
 
-public class chAttendanceService {
+public class AttendanceService {
 
 
     private static final double MINIMUM_ATTENDANCE = 80.0;
