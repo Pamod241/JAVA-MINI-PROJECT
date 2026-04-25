@@ -1,6 +1,7 @@
 package auth;
 
 import db.DBConnection;
+import model.*;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
