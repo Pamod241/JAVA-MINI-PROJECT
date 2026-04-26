@@ -8,7 +8,7 @@ import util.UITheme;
 import javax.swing.*;
 import javax.swing.table.*;
 import java.awt.*;
-import java.util.
+import java.util.*;
 public class TechOfficerAttendanceFrame extends JFrame {
 
     private final AttendanceService svc = new AttendanceService();
